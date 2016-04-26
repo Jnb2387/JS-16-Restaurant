@@ -64,13 +64,14 @@ function Plate(name, description, price, ingredients){
     this.description = description;
     this.price = price;
     this.ingredients = ingredients;
+    
 }
 Plate.prototype.stringify = function(){
     console.log(this.name + " Will set your tastebuds on fire " + this.description + " For only " + this.price + " this dish has:" + this.ingredients)
 }
-var hamPlate = new Plate ("Ham sandwhich with potatoes", "Delicious Ham Sandwhich with creamy mashed potatoes", 11.00, [sandwhich, potatoes])
-var soupPlate = new Plate ("Soup with Bread Sticks", "Hot Soup served with a spork", 9.25, [soup, breadsticks])
-var pastaPlate= new Plate ("Pasta with creamy Alfredo sauce", "Hand cut pasta with housemade Sauce", 13.00, [pasta, breadsticks])
+var hamPlate = new Plate ("Ham sandwhich with potatoes", "Delicious Ham Sandwhich with creamy mashed potatoes", 11.00, [sandwhich.name, potatoes.name])
+var soupPlate = new Plate ("Soup with Bread Sticks", "Hot Soup served with a spork", 9.25, [soup.name, breadsticks.name])
+var pastaPlate= new Plate ("Pasta with creamy Alfredo sauce", "Hand cut pasta with housemade Sauce", 13.00, [pasta.name, breadsticks.name])
 
 hamPlate.stringify()
 soupPlate.stringify()
@@ -78,13 +79,33 @@ pastaPlate.stringify()
 
 
 
-function Order(plates){
+function Order(plates, drinks){
     this.plates = plates;
+    this.drinks = drinks;
 }
+Order.prototype.stringify = function(){
+    console.log("Your Order consists of " + this.plates.name + " and a " + this.drinks.name )
+}
+var order1 = new Order (hamPlate, whiskeySour)
+var order2 = new Order (soupPlate, vodkaTonic)
+var order3 = new Order (pastaPlate, bloodyMary)
 
-function Menu(plates){
+order1.stringify()
+order2.stringify()
+order3.stringify()
+
+
+
+function Menu(plates, drinks){
     this.plates = plates;
+    this.drinks = drinks;
 }
+Menu.prototype.stringify= function(){
+   console.log("Our Menu consists of: " )
+}
+var menu1 = new Menu (hamPlate, soupPlate, pastaPlate)
+menu1.stringify()
+
 
 
 function Restaurant(name, description, menu){
